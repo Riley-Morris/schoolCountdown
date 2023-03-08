@@ -54,13 +54,7 @@ header{
   background-attachment:fixed;
   }
   }
-@media screen and (max-width: 900px) {
-  table {
-  margin-top: 20vh;
-  width: 50vw;
-  height: 50vh;
-  }
-  }  
+
 @media screen and (max-width: 900px) {
   .textDisplayBox {
   max-width: 80vw;
@@ -72,6 +66,7 @@ header{
   position: fixed;
   top: 2vh;
   margin: 1vh;
+  font-size: 5vh;
   }
   }   
   @media screen and (max-width: 900px) {
