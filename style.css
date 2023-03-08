@@ -41,6 +41,14 @@ header{
 #firstTextBox{
   margin-top: 2%;
 }
+#footer{
+    color:  #f7f7fc;
+    position: fixed;
+    left: 50%;
+    margin-left: -20px;
+    font-size: larger;
+    bottom: 0;
+}
 @media screen and (max-width: 900px) {
   body {
   background-attachment:fixed;
@@ -56,11 +64,11 @@ header{
 @media screen and (max-width: 900px) {
   .textDisplayBox {
   max-width: 80vw;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   }
   }   
 @media screen and (max-width: 900px) {
-  .headerWrapper {
+  header {
   position: fixed;
   top: 2vh;
   margin: 1vh;
