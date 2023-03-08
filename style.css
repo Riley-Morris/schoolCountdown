@@ -1,0 +1,74 @@
+html {
+    font-family: sans-serif;
+    height: 100%;
+  }
+body{
+height: 100%;
+background-image: url('background.jpg');
+height: 100%;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+} 
+
+header{
+  font-size: 10vh;
+  font-weight: bold;
+  color: #C5C5C7;
+}
+.textWrapper{
+    max-height: 75vh;
+    width: 75vw;
+    position: fixed;
+    margin-top: 25vh;
+} 
+.textDisplayBox{
+  font-size: 1.8rem;
+  color: #C5C5C7;
+  padding-bottom: 1%;
+  padding-top: 4vh;
+  width: 50%;
+  margin: auto;
+  font-weight: bold;
+
+}
+.textDisplayNeighbor{
+  display: inline;
+  }
+.dynamicDisplay{
+  text-decoration: underline;
+}
+#firstTextBox{
+  margin-top: 2%;
+}
+@media screen and (max-width: 900px) {
+  body {
+  background-attachment:fixed;
+  }
+  }
+@media screen and (max-width: 900px) {
+  table {
+  margin-top: 20vh;
+  width: 50vw;
+  height: 50vh;
+  }
+  }  
+@media screen and (max-width: 900px) {
+  .textDisplayBox {
+  max-width: 80vw;
+  font-size: 1.2rem;
+  }
+  }   
+@media screen and (max-width: 900px) {
+  .headerWrapper {
+  position: fixed;
+  top: 2vh;
+  margin: 1vh;
+  }
+  }   
+  @media screen and (max-width: 900px) {
+    .className {
+    width: fit-content;
+    font-size: 1rem;
+    }
+    }  
