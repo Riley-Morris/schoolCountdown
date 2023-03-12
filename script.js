@@ -49,7 +49,7 @@ function generateDates(startDate, endDate){
     const timeInterval = endSaturday - startSaturday
     //amount of saturdays in time interval
     const numberOfSaturdays = timeInterval/sevenDays
-    for (let i = 1; i <= numberOfSaturdays; i++){
+    for (let i = 0; i <= numberOfSaturdays + 1; i++){
       let satDate = new Date(startSaturday);
       satDate.setDate(satDate.getDate() + (i*7));
       const satUnixTimeStamp = Math.floor(satDate.getTime()/1000)
@@ -111,17 +111,22 @@ function generateDates(startDate, endDate){
   
   // check current day and remove any that have passed
   function updateArrayDays(dateArray){
-    let Unixnow = getCurrentDay();
+    let unixNow = getCurrentDay();
     let currentDateIndex = dateArray.indexOf(unixNow);
     if(currentDateIndex !== -1) {
       return dateArray.splice(currentDateIndex, dateArray.length - 1);
   }return dateArray
   }
   //create array of only current day + what is left and display that information on html
-  function pushCurrentDay(dateArray){
-    const today = cycleDaysObject[getCurrentDay()]
+  function pushCurrentDay(obj){
+    const today = obj[getCurrentDay()]
+    console.log('TODAY ' + today)
     const cycleDayElement = document.querySelector('#cycleDay')
+    if (typeof today === 'undefined'){
+      cycleDayElement.innerHTML = 'Not a school day, why are you checking this?'
+    }else{
     cycleDayElement.innerHTML = today
+    }
   }
   
   //get days left and push to html
@@ -140,9 +145,10 @@ function generateDates(startDate, endDate){
   let saturdayStart = 1678078800000
   let saturdayEnd = 	1686974400000
   let weekendsInInterval = getWeekendsRange(1678510800000, 1686974400000)
-  
+  console.log(showFullTime(weekendsInInterval))
   // Combine weekends range function with generate dates to remove weekends
   let filteredRange = range.filter((timeStamp)=>!weekendsInInterval.includes(timeStamp))
+  console.log(showFullTime(filteredRange))
   //filter out PED and holidays, then pass through function to remove old dates
   let secondFilter = (deleteArrayItems(filteredRange, 7, 16, 17, 26, 27, 42, 43, 44, 45, 46, 47,
     48, 49, 50, 51, 57, 82))
@@ -151,15 +157,10 @@ function generateDates(startDate, endDate){
   let cycleDaysObject = createObjectAndValues(secondFilter)
   
   const currentDay = getCurrentDay()
+  console.log(secondFilter)
   const currentCycleDay = cycleDaysObject[currentDay]
   //add borders to current day column on html
   addCycleBorders(`day${currentCycleDay}`)
   //get days left displayed to html
-  pushCurrentDay(secondFilter)
+  pushCurrentDay(cycleDaysObject)
   pushDaysLeft(secondFilter)
-  //TODO
-  //make a countdown function to end of year - run a function that checks if current day 
-  //is greater than previous list items and remove list items and return length of array
-  //combine js with css to highlight current cycle day
-  // allow drop down selection for other days
-  
