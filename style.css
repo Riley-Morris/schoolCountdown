@@ -39,7 +39,7 @@ header{
   text-decoration: underline;
 }
 #firstTextBox{
-  margin-top: 2%;
+  margin-top: 3%;
 }
 #footer{
     color:  #f7f7fc;
@@ -48,6 +48,13 @@ header{
     margin-left: -20px;
     font-size: larger;
     bottom: 0;
+}
+@media screen and (max-width: 900px) {
+  #firstTextBox {
+    position: fixed;
+    top: 12vh;
+    left: 4vw;
+  }
 }
 @media screen and (max-width: 900px) {
   body {
@@ -59,8 +66,17 @@ header{
   .textDisplayBox {
   max-width: 80vw;
   font-size: 1.8rem;
+  
   }
   }   
+@media screen and (max-width: 900px) {
+  #secondTextBox {
+    position: fixed;
+    top: 60vh;
+    left: 40vw;
+  }
+} 
+  
 @media screen and (max-width: 900px) {
   header {
   position: fixed;
