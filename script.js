@@ -173,7 +173,7 @@ function pushDaysLeft(dateArray){
 function getLastSchoolDay(today, obj){
   // today = (adjustDaylightSavings(today))
   for (let u = today; u>=(parseInt(Object.keys(obj)[0])); u -=86400000){
-
+//FIX THIS IN FALL - OFFSETS THE DAYLIGHT SAVING ON MARCH 12 2023 only
     if (u ===1678593600000){
       u += 3600000
     }
