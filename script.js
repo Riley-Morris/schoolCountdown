@@ -131,7 +131,6 @@ function generateDates(startDate, endDate){
   
   //get days left and push to html
 function pushDaysLeft(dateArray){
-  console.log(cycleDaysObject[getCurrentDay()])
   if (cycleDaysObject[currentDay] ==! undefined){
   const dayLeft = updateArrayDays(dateArray, getCurrentDay()).length
   const daysLeftElement = document.querySelector('#daysLeft')
@@ -145,7 +144,6 @@ function pushDaysLeft(dateArray){
   }
 }
 function getLastSchoolDay(today, obj){
-  // today = (adjustDaylightSavings(today))
   for (let u = today; u>=(parseInt(Object.keys(obj)[0])); u -=86400000){
 //FIX THIS IN FALL - OFFSETS THE DAYLIGHT SAVING ON MARCH 12 2023 only
     if (u ===1678593600000){
@@ -169,7 +167,7 @@ function getLastSchoolDay(today, obj){
   let filteredRange = range.filter((timeStamp)=>!weekendsInInterval.includes(timeStamp))
   //filter out PED and holidays, then pass through function to remove old dates
   let secondFilter = (deleteArrayItems(filteredRange, 5, 16, 17, 26, 27, 42, 43, 44, 45, 46, 47,
-    48, 49, 50, 51, 57, 82))
+    48, 49, 50, 51, 57, 78, 82))
  
   //create date object with correct cycle days
   let cycleDaysObject = createObjectAndValues(secondFilter)
