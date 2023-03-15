@@ -131,19 +131,31 @@ function generateDates(startDate, endDate){
   
   //get days left and push to html
 function pushDaysLeft(dateArray){
-  if (cycleDaysObject[currentDay] =! 'undefined'){
+  console.log(cycleDaysObject[getCurrentDay()])
+  if (cycleDaysObject[currentDay] ==! undefined){
   const dayLeft = updateArrayDays(dateArray, getCurrentDay()).length
   const daysLeftElement = document.querySelector('#daysLeft')
   daysLeftElement.innerHTML = dayLeft
   } else {
-    console.log('triggerd')
+    console.log('triggered as undefined/false')
     console.log('last day was ' + getLastSchoolDay(getCurrentDay(), cycleDaysObject))
     const dayLeft = updateArrayDays(dateArray, getLastSchoolDay(getCurrentDay(), cycleDaysObject)).length
     const daysLeftElement = document.querySelector('#daysLeft')
     daysLeftElement.innerHTML = dayLeft
   }
 }
-  
+function getLastSchoolDay(today, obj){
+  // today = (adjustDaylightSavings(today))
+  for (let u = today; u>=(parseInt(Object.keys(obj)[0])); u -=86400000){
+//FIX THIS IN FALL - OFFSETS THE DAYLIGHT SAVING ON MARCH 12 2023 only
+    if (u ===1678593600000){
+      u += 3600000
+    }
+    if (obj[u] !== false && obj[u] !== undefined){
+      return (u)
+    } 
+  }
+}
   let start = parseDate('2023-03-06')
   let end = parseDate('2023-06-23')
   let range = generateDates(start, end)
@@ -158,30 +170,21 @@ function pushDaysLeft(dateArray){
   //filter out PED and holidays, then pass through function to remove old dates
   let secondFilter = (deleteArrayItems(filteredRange, 5, 16, 17, 26, 27, 42, 43, 44, 45, 46, 47,
     48, 49, 50, 51, 57, 82))
-  
+ 
   //create date object with correct cycle days
   let cycleDaysObject = createObjectAndValues(secondFilter)
-  
+
   const currentDay = getCurrentDay()
   const currentCycleDay = cycleDaysObject[currentDay]
   //add borders to current day column on html
   addCycleBorders(`day${currentCycleDay}`)
   //get days left displayed to html
+
   pushCurrentDay(cycleDaysObject)
+  //bewtween above and below, cycleDaysObject[currentDay] becomes false
   pushDaysLeft(secondFilter)
 
-function getLastSchoolDay(today, obj){
-  // today = (adjustDaylightSavings(today))
-  for (let u = today; u>=(parseInt(Object.keys(obj)[0])); u -=86400000){
-//FIX THIS IN FALL - OFFSETS THE DAYLIGHT SAVING ON MARCH 12 2023 only
-    if (u ===1678593600000){
-      u += 3600000
-    }
-    if (obj[u] !== false && obj[u] !== undefined){
-      return (u)
-    } 
-  }
-}
+
 
 //last item in object
 //(parseInt(Object.keys(obj)[Object.keys(obj).length-1]))
