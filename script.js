@@ -122,7 +122,7 @@ function generateDates(startDate, endDate){
     const today = obj[getCurrentDay()]
     const cycleDayElement = document.querySelector('#cycleDay')
     if (typeof today === 'undefined'){
-      cycleDayElement.innerHTML = 'Not a school day, why are you checking this? Previous cycle day was ' + cycleDaysObject[getLastSchoolDay(currentDay, cycleDaysObject)]
+      cycleDayElement.innerHTML = 'Not a school day, Previous cycle day was ' + cycleDaysObject[getLastSchoolDay(currentDay, cycleDaysObject)]
       
     }else{
     cycleDayElement.innerHTML = today
